@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Dominic's Gästebuch</title>
+
+    <!-- hier werden die grafischen Formatierungen vom Cascade Style Sheet geholt -->
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+    <!-- hier werden weitere grafische Formatierungen von einem zweiten erweiterten Cascade Style Sheet geholt  -->
+    <link href="{{ url_for('static', filename='css/bootstrap-theme.min.css') }}" rel="stylesheet">
+
+    <!-- dieses Template wird für die Formatierung der Seite eingesetzt -->
+    <link href="{{ url_for('static', filename='css/theme.css') }}" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <div class="container theme-showcase" role="main">
+
+      <div class="jumbotron">
+        <h1>Dominic's Gästebuch (HFSNT)</h1>
+        <a type="button" class="btn btn-link" href="{{ url_for('sign') }}">Trage dich HIER im Gästebuch ein</a>
+      </div>
+
+      {% for r in result %}
+      <div class="page-header">
+        <h1>{{ r.name }}</h1>
+      </div>
+      <div class="well">
+        <p>{{ r.comment }}</p>
+      </div>
+      {% endfor %}
+
+    </div> 
+
+  </body>
+</html>
